@@ -5,15 +5,15 @@
         <tr>
             <th>Sl.No</th>
             <th>Name</th>
-            <th>Salary</th>
-            <th>Age</th>
+            <th>Email</th>
+            <th>Gender</th>
             <th>Action</th>
         </tr>
         <tr v-for="item in list" v-bind:key="item.id">
             <td>{{item.id}}</td>
-            <td>{{item.employee_name}}</td>
-            <td>{{item.employee_salary}}</td>
-            <td>{{item.employee_age}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.gender}}</td>
             <td><button
                 class="btn btn-danger"
                 @click="deleteList(item.id)"
@@ -47,7 +47,7 @@ export default {
     mounted()
     {
         //console.log('Axios->', axios)
-        axios.get('http://dummy.restapiexample.com/api/v1/employees')
+        axios.get('https://gorest.co.in/public-api/users')
         .then((res)=>{
             console.warn(res);
             console.warn(res.data.data);
@@ -58,9 +58,9 @@ export default {
     },
 
     methods: {
-        deleteBook(id) {
-            this.axios
-                .delete(`http://dummy.restapiexample.com/api/v1/employees/delete/${id}`)
+        deleteList(id) {
+            axios
+                .delete(`https://gorest.co.in/public-api/users/${id}`)
                 .then((response) => {
                     console.log('Delete Data',response);
                     let i = this.list.map(item => item.id).indexOf(id); // find index of your object
