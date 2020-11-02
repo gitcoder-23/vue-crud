@@ -40,9 +40,10 @@ import axios from 'axios';
 
 export default {
     name: 'Employeelist',
-    data(){
-        return {list: undefined};
-    },
+    data: ()=>({
+        //return {list: undefined};
+        list: [],
+    }),
 
     mounted()
     {
